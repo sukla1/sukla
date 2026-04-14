@@ -6,27 +6,6 @@
   <title>SUKLA</title>
   <style>
     :root {
-      body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(600px circle at 20% 30%, rgba(214,178,94,0.08), transparent 40%),
-    radial-gradient(500px circle at 80% 20%, rgba(255,255,255,0.05), transparent 40%),
-    radial-gradient(700px circle at 50% 80%, rgba(214,178,94,0.06), transparent 50%);
-  animation: floatGlow 18s ease-in-out infinite alternate;
-  z-index: 0;
-}
-
-@keyframes floatGlow {
-  0% {
-    transform: translateY(0px) scale(1);
-  }
-  100% {
-    transform: translateY(-20px) scale(1.05);
-  }
-}
       --bg: #070707;
       --bg-soft: #0d0d0d;
       --panel: rgba(255, 255, 255, 0.055);
@@ -54,8 +33,6 @@
     body {
      body {
   margin: 0;
-  position: relative;
-  z-index: 1;
   font-family: Arial, sans-serif;
   color: var(--text);
   background: ...
