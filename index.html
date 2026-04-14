@@ -30,12 +30,17 @@
       scroll-behavior: smooth;
     }
 
-    body {
-     body {
+   body {
   margin: 0;
   font-family: Arial, sans-serif;
   color: var(--text);
-  background: ...
+  background:
+    radial-gradient(circle at 10% 10%, rgba(214, 178, 94, 0.10), transparent 22%),
+    radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.05), transparent 18%),
+    radial-gradient(circle at 60% 80%, rgba(214, 178, 94, 0.08), transparent 20%),
+    linear-gradient(180deg, #080808 0%, #0a0a0a 55%, #090909 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
 }
         radial-gradient(circle at 10% 10%, rgba(214, 178, 94, 0.12), transparent 22%),
         radial-gradient(circle at 85% 18%, rgba(255, 255, 255, 0.06), transparent 18%),
@@ -45,16 +50,6 @@
       overflow-x: hidden;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background:
-        linear-gradient(to bottom, rgba(255,255,255,0.02), transparent 18%),
-        radial-gradient(circle at center, transparent 55%, rgba(0,0,0,0.35) 100%);
-      z-index: 0;
-    }
 
     a {
       color: inherit;
