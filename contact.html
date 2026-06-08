@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | SUKLA</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    :root {
+      --bg: #070707;
+      --panel: rgba(255, 255, 255, 0.055);
+      --border: rgba(255, 255, 255, 0.12);
+      --gold: #d6b25e;
+      --text: #f4efe6;
+      --muted: #b6ab97;
+      --danger: #ff8b8b;
+      --success: #9ee6b3;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+      --blur: blur(18px);
+      --radius: 24px;
+      --radius-sm: 16px;
+      --container: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(214, 178, 94, 0.10), transparent 22%),
+        radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.05), transparent 18%),
+        radial-gradient(circle at 60% 80%, rgba(214, 178, 94, 0.08), transparent 20%),
+        linear-gradient(180deg, #080808 0%, #0a0a0a 55%, #090909 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 32px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .glass {
+      background: linear-gradient(
+        180deg,
+        rgba(255,255,255,0.08) 0%,
+        rgba(255,255,255,0.03) 100%
+      );
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 12px;
+      z-index: 20;
+      padding-top: 14px;
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 16px 18px;
+      border-radius: 999px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-badge {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #f3d48d, #c49635 70%);
+      box-shadow: 0 0 20px rgba(214, 178, 94, 0.45);
+      flex-shrink: 0;
+    }
+
+    .brand-name {
+      font-size: 15px;
+      letter-spacing: 0.42em;
+      color: var(--gold);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav a:hover,
+    .nav a[aria-current="page"] {
+      color: var(--text);
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      min-width: 154px;
+      border: none;
+      cursor: pointer;
+      transition: 0.22s ease;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+
+    .btn-gold {
+      padding: 14px 24px;
+      border-radius: 999px;
+      color: #151515;
+      background: linear-gradient(180deg, #efce86 0%, #d6b25e 100%);
+      box-shadow: 0 14px 30px rgba(214, 178, 94, 0.24);
+    }
+
+    .btn-gold:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 36px rgba(214, 178, 94, 0.3);
+    }
+
+    .btn-gold:disabled {
+      cursor: progress;
+      opacity: 0.72;
+    }
+
+    .contact-page {
+      padding: 72px 0 38px;
+    }
+
+    .contact-shell {
+      display: grid;
+      grid-template-columns: 0.82fr 1.18fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .contact-intro,
+    .contact-form-card {
+      border-radius: var(--radius);
+    }
+
+    .contact-intro {
+      padding: 40px;
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 36px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold));
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(46px, 8vw, 88px);
+      line-height: 0.94;
+      letter-spacing: 0.08em;
+    }
+
+    .intro-text {
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.9;
+      max-width: 560px;
+    }
+
+    .contact-email {
+      color: var(--gold);
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      overflow-wrap: anywhere;
+    }
+
+    .contact-form-card {
+      padding: 34px;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 18px;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .field {
+      display: grid;
+      gap: 9px;
+    }
+
+    label {
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-sm);
+      background: rgba(255,255,255,0.045);
+      color: var(--text);
+      font: inherit;
+      outline: none;
+      padding: 15px 16px;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    textarea {
+      min-height: 220px;
+      resize: vertical;
+      line-height: 1.7;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: rgba(214, 178, 94, 0.55);
+      background: rgba(255,255,255,0.065);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(182, 171, 151, 0.72);
+    }
+
+    .hidden-field {
+      display: none;
+    }
+
+    .form-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 2px;
+    }
+
+    .form-status {
+      min-height: 22px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .form-status.success {
+      color: var(--success);
+    }
+
+    .form-status.error {
+      color: var(--danger);
+    }
+
+    .footer {
+      padding: 0 0 38px;
+    }
+
+    .footer-card {
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer strong {
+      color: var(--gold);
+      letter-spacing: 0.2em;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 980px) {
+      .contact-shell,
+      .field-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-intro {
+        min-height: auto;
+      }
+
+      .footer-card,
+      .topbar-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav {
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(var(--container), calc(100% - 18px));
+      }
+
+      .contact-page {
+        padding-top: 42px;
+      }
+
+      .contact-intro,
+      .contact-form-card {
+        padding: 18px;
+      }
+
+      .brand-name {
+        letter-spacing: 0.28em;
+        font-size: 13px;
+      }
+
+      .btn-gold {
+        width: 100%;
+      }
+
+      .form-footer {
+        align-items: stretch;
+        flex-direction: column-reverse;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-inner glass">
+        <a class="brand" href="/">
+          <div class="brand-badge"></div>
+          <div class="brand-name">SUKLA</div>
+        </a>
+
+        <nav class="nav">
+          <a href="/">Home</a>
+          <a href="/#about">About</a>
+          <a href="/#projects">Projects</a>
+          <a href="/#player">Player</a>
+          <a href="contact.html" aria-current="page">Contact Us</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <main class="contact-page">
+    <div class="container">
+      <div class="contact-shell">
+        <section class="contact-intro glass">
+          <div>
+            <div class="eyebrow">Contact</div>
+            <h1>Contact Us</h1>
+            <p class="intro-text">
+              Send your idea, request, or message to SUKLA. Every detail you write here is delivered to the admin inbox.
+            </p>
+          </div>
+          <a class="contact-email" href="mailto:sukla.admin@gmail.com">sukla.admin@gmail.com</a>
+        </section>
+
+        <section class="contact-form-card glass" aria-label="Contact form">
+          <form
+            class="contact-form"
+            id="contactForm"
+            action="https://formsubmit.co/sukla.admin@gmail.com"
+            data-endpoint="https://formsubmit.co/ajax/sukla.admin@gmail.com"
+            method="POST"
+          >
+            <input type="text" name="_honey" class="hidden-field" tabindex="-1" autocomplete="off">
+            <input type="hidden" name="_subject" value="New SUKLA contact message">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+
+            <div class="field-grid">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
+              </div>
+
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" placeholder="your@email.com" required>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="subject">Subject</label>
+              <input id="subject" name="subject" type="text" placeholder="What is this about?" required>
+            </div>
+
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+            </div>
+
+            <div class="form-footer">
+              <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+              <button class="btn btn-gold" id="submitButton" type="submit">Send Message</button>
+            </div>
+          </form>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-card glass">
+        <div><strong>SUKLA</strong></div>
+        <div>Premium brand identity for digital products and refined interfaces.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+const form = document.getElementById('contactForm');
+const submitButton = document.getElementById('submitButton');
+const formStatus = document.getElementById('formStatus');
+
+const setStatus = (message, type = '') => {
+  formStatus.textContent = message;
+  formStatus.className = type ? `form-status ${type}` : 'form-status';
+};
+
+form.addEventListener('submit', async event => {
+  event.preventDefault();
+
+  const formData = new FormData(form);
+  const endpoint = form.dataset.endpoint || form.action;
+
+  submitButton.disabled = true;
+  submitButton.textContent = 'Sending...';
+  setStatus('');
+
+  try {
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        Accept: 'application/json'
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error('Unable to send message.');
+    }
+
+    form.reset();
+    setStatus('Message sent. Thank you.', 'success');
+  } catch (error) {
+    console.error(error);
+    setStatus('Could not send. Please email sukla.admin@gmail.com.', 'error');
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = 'Send Message';
+  }
+});
+  </script>
+</body>
+</html>

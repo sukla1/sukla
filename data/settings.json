@@ -44,8 +44,8 @@
       "link": "#"
     },
     "secondaryAction": {
-      "label": "Contact",
-      "link": "#contact"
+      "label": "Contact Us",
+      "link": "contact.html"
     }
   },
   "footer": {
