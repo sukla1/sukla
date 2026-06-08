@@ -15,12 +15,12 @@
       ]
     },
     {
-      "name": "coming soon",
+      "name": "SUKLA link saver",
       "slug": "brand-platform",
       "shortDescription": "we are working on new ideas.",
       "fullDescription": "This project area is reserved for a future SUKLA brand platform. The content can be edited later from the Electron admin app by updating this JSON file.",
       "status": "Brand Platform",
-      "downloadLink": "",
+      "downloadLink": "downloads/sukla-link-saver.exe",
       "features": [
         "Editable project content",
         "Reusable SUKLA layout",
