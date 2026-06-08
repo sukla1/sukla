@@ -1,0 +1,55 @@
+{
+  "siteTitle": "SUKLA",
+  "subtitle": "Luxury Digital Identity",
+  "heroText": "A premium digital brand for refined tools, cinematic interfaces, and elegant software experiences. Built with dark luxury, soft gold accents, and crystal-glass aesthetics.",
+  "slogan": "All ideas could be done.",
+  "brandName": "SUKLA",
+  "heroCta": {
+    "label": "Explore Brand",
+    "link": "#projects"
+  },
+  "stats": [
+    {
+      "label": "Style",
+      "value": "Luxury"
+    },
+    {
+      "label": "Focus",
+      "value": "AI"
+    },
+    {
+      "label": "Identity",
+      "value": "SUKLA"
+    }
+  ],
+  "mockup": {
+    "label": "Premium Interface",
+    "title": "SUKLA EXPERIENCE"
+  },
+  "about": {
+    "kicker": "About",
+    "title": "One brand for everything you build.",
+    "text": "SUKLA is not tied to one product. It is a unified visual identity for future software, media tools, player experiences, digital products, and premium concepts built under a single name."
+  },
+  "projects": {
+    "kicker": "Projects",
+    "title": "Designed to grow with your ideas."
+  },
+  "player": {
+    "kicker": "Featured",
+    "title": "SUKLA Player",
+    "text": "A premium player concept built around dark glass surfaces, subtle gold highlights, and a clean cinematic layout. This section is ready for your future app download or product launch.",
+    "primaryAction": {
+      "label": "Coming Soon",
+      "link": "#"
+    },
+    "secondaryAction": {
+      "label": "Contact",
+      "link": "#contact"
+    }
+  },
+  "footer": {
+    "brand": "SUKLA",
+    "text": "Premium brand identity for digital products and refined interfaces."
+  }
+}

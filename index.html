@@ -427,6 +427,7 @@
     }
 
     .project-card {
+      display: block;
       padding: 22px;
       position: relative;
       overflow: hidden;
@@ -694,7 +695,7 @@
       <div class="topbar-inner glass">
         <div class="brand">
           <div class="brand-badge"></div>
-          <div class="brand-name">SUKLA</div>
+          <div class="brand-name" id="brandName">SUKLA</div>
         </div>
 
         <nav class="nav">
@@ -711,31 +712,18 @@
     <div class="container">
       <div class="hero-grid">
         <div class="hero-left glass">
-          <div class="eyebrow">Luxury Digital Identity</div>
-          <h1>SUKLA</h1>
-          <div class="hero-text">
+          <div class="eyebrow" id="siteSubtitle">Luxury Digital Identity</div>
+          <h1 id="siteTitle">SUKLA</h1>
+          <div class="hero-text" id="heroText">
             A premium digital brand for refined tools, cinematic interfaces, and elegant software experiences. Built with dark luxury, soft gold accents, and crystal-glass aesthetics.
           </div>
 
           <div class="hero-actions">
-            <a class="btn btn-gold" href="#projects">Explore Brand</a>
+            <a class="btn btn-gold" id="heroCta" href="#projects">Explore Brand</a>
             
           </div>
 
-          <div class="hero-stats">
-            <div class="mini-card">
-              <div class="mini-label">Style</div>
-              <div class="mini-value">Luxury</div>
-            </div>
-            <div class="mini-card">
-              <div class="mini-label">Focus</div>
-              <div class="mini-value">AI</div>
-            </div>
-            <div class="mini-card">
-              <div class="mini-label">Identity</div>
-              <div class="mini-value">SUKLA</div>
-            </div>
-          </div>
+          <div class="hero-stats" id="heroStats"></div>
         </div>
 
         <div class="hero-right glass">
@@ -744,15 +732,15 @@
 
           <div class="mock-window glass">
             <div class="mock-top">
-              <span>Premium Interface</span>
+              <span id="mockupLabel">Premium Interface</span>
               <div class="mock-dots">
                 <span></span><span></span><span></span>
               </div>
             </div>
 
             <div class="mock-screen">
-              <div class="mock-title">SUKLA EXPERIENCE</div>
-              <p class="mock-large">All ideas 
+              <div class="mock-title" id="mockupTitle">SUKLA EXPERIENCE</div>
+              <p class="mock-large" id="siteSlogan">All ideas 
                 could be done.</p>
               <div class="mock-lines">
                 <span></span>
@@ -771,10 +759,10 @@
       <div class="section-card glass">
         <div class="section-head">
           <div>
-            <div class="section-kicker">About</div>
-            <h2>One brand for everything you build.</h2>
+            <div class="section-kicker" id="aboutKicker">About</div>
+            <h2 id="aboutTitle">One brand for everything you build.</h2>
           </div>
-          <div class="section-sub">
+          <div class="section-sub" id="aboutText">
             SUKLA is not tied to one product. It is a unified visual identity for future software, media tools, player experiences, digital products, and premium concepts built under a single name.
           </div>
         </div>
@@ -786,33 +774,12 @@
     <div class="container">
       <div class="section-head" style="margin-bottom:18px;">
         <div>
-          <div class="section-kicker">Projects</div>
-          <h2>Designed to grow with your ideas.</h2>
+          <div class="section-kicker" id="projectsKicker">Projects</div>
+          <h2 id="projectsTitle">Designed to grow with your ideas.</h2>
         </div>
       </div>
 
-      <div class="projects-grid">
-        <div class="project-card glass">
-          <div class="project-number"></div>
-          <h3>SUKLA Player</h3>
-          <p>A dark cinematic desktop player with a premium interface, smooth controls, and a strong branded visual identity.</p>
-          <div class="tag">Desktop Experience</div>
-        </div>
-
-        <div class="project-card glass">
-          <div class="project-number"></div>
-          <h3>coming soon</h3>
-          <p>we are working on new ideas.</p>
-          <div class="tag">Brand Platform</div>
-        </div>
-
-        <div class="project-card glass">
-          <div class="project-number"></div>
-          <h3>coming soon</h3>
-          <p>we are working on new ideas.</p>
-          <div class="tag">Expandable System</div>
-        </div>
-      </div>
+      <div class="projects-grid" id="projectsGrid"></div>
     </div>
   </section>
 
@@ -827,15 +794,15 @@
           </div>
 
           <div class="player-meta">
-            <div class="section-kicker">Featured</div>
-            <h3>SUKLA Player</h3>
-            <p>
+            <div class="section-kicker" id="playerKicker">Featured</div>
+            <h3 id="playerTitle">SUKLA Player</h3>
+            <p id="playerText">
               A premium player concept built around dark glass surfaces, subtle gold highlights, and a clean cinematic layout. This section is ready for your future app download or product launch.
             </p>
 
             <div class="hero-actions">
-              <a class="btn btn-gold" href="#">Coming Soon</a>
-              <a class="btn btn-ghost" href="#contact">Contact</a>
+              <a class="btn btn-gold" id="playerPrimaryAction" href="#">Coming Soon</a>
+              <a class="btn btn-ghost" id="playerSecondaryAction" href="#contact">Contact</a>
             </div>
           </div>
         </div>
@@ -846,30 +813,177 @@
   <footer class="footer" id="contact">
     <div class="container">
       <div class="footer-card glass">
-        <div><strong>SUKLA</strong></div>
-        <div>Premium brand identity for digital products and refined interfaces.</div>
+        <div><strong id="footerBrand">SUKLA</strong></div>
+        <div id="footerText">Premium brand identity for digital products and refined interfaces.</div>
       </div>
     </div>
   </footer>
   <script>
-const cards = document.querySelectorAll('.project-card, .player-card');
+const setText = (id, value) => {
+  const element = document.getElementById(id);
 
-cards.forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+  if (element && typeof value === 'string') {
+    element.textContent = value;
+  }
+};
 
-    const rotateX = ((y / rect.height) - 0.5) * -6;
-    const rotateY = ((x / rect.width) - 0.5) * 6;
+const setAction = (id, action) => {
+  const element = document.getElementById(id);
 
-    card.style.transform = perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px);
+  if (!element || !action) {
+    return;
+  }
+
+  if (typeof action.label === 'string') {
+    element.textContent = action.label;
+  }
+
+  if (typeof action.link === 'string') {
+    element.href = action.link;
+  }
+};
+
+const renderStats = stats => {
+  const container = document.getElementById('heroStats');
+
+  if (!container || !Array.isArray(stats)) {
+    return;
+  }
+
+  container.textContent = '';
+
+  stats.forEach(stat => {
+    const card = document.createElement('div');
+    card.className = 'mini-card';
+
+    const label = document.createElement('div');
+    label.className = 'mini-label';
+    label.textContent = stat.label || '';
+
+    const value = document.createElement('div');
+    value.className = 'mini-value';
+    value.textContent = stat.value || '';
+
+    card.append(label, value);
+    container.append(card);
   });
+};
 
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = 'translateY(-6px)';
+const renderProjects = projects => {
+  const container = document.getElementById('projectsGrid');
+
+  if (!container || !Array.isArray(projects)) {
+    return;
+  }
+
+  container.textContent = '';
+
+  projects.forEach(project => {
+    const card = document.createElement('a');
+    card.className = 'project-card glass';
+    card.href = project.slug ? `project.html?slug=${encodeURIComponent(project.slug)}` : '#';
+
+    const number = document.createElement('div');
+    number.className = 'project-number';
+    number.textContent = project.status || '';
+
+    const title = document.createElement('h3');
+    title.textContent = project.name || '';
+
+    const description = document.createElement('p');
+    description.textContent = project.shortDescription || project.fullDescription || '';
+
+    const tag = document.createElement('div');
+    tag.className = 'tag';
+    tag.textContent = 'View Project';
+
+    card.append(number, title, description, tag);
+    container.append(card);
   });
-});
+};
+
+const applySettings = settings => {
+  document.title = settings.siteTitle || document.title;
+
+  setText('brandName', settings.brandName || settings.siteTitle);
+  setText('siteTitle', settings.siteTitle);
+  setText('siteSubtitle', settings.subtitle);
+  setText('heroText', settings.heroText);
+  setText('siteSlogan', settings.slogan);
+  setAction('heroCta', settings.heroCta);
+  renderStats(settings.stats);
+
+  setText('mockupLabel', settings.mockup?.label);
+  setText('mockupTitle', settings.mockup?.title);
+
+  setText('aboutKicker', settings.about?.kicker);
+  setText('aboutTitle', settings.about?.title);
+  setText('aboutText', settings.about?.text);
+
+  setText('projectsKicker', settings.projects?.kicker);
+  setText('projectsTitle', settings.projects?.title);
+
+  setText('playerKicker', settings.player?.kicker);
+  setText('playerTitle', settings.player?.title);
+  setText('playerText', settings.player?.text);
+  setAction('playerPrimaryAction', settings.player?.primaryAction);
+  setAction('playerSecondaryAction', settings.player?.secondaryAction);
+
+  setText('footerBrand', settings.footer?.brand);
+  setText('footerText', settings.footer?.text);
+};
+
+const attachCardEffects = () => {
+  const cards = document.querySelectorAll('.project-card, .player-card');
+
+  cards.forEach(card => {
+    if (card.dataset.hoverReady === 'true') {
+      return;
+    }
+
+    card.dataset.hoverReady = 'true';
+
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const rotateX = ((y / rect.height) - 0.5) * -6;
+      const rotateY = ((x / rect.width) - 0.5) * 6;
+
+      card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+};
+
+const loadSiteData = async () => {
+  try {
+    const [settingsResponse, projectsResponse] = await Promise.all([
+      fetch('/data/settings.json'),
+      fetch('/data/projects.json')
+    ]);
+
+    if (!settingsResponse.ok || !projectsResponse.ok) {
+      throw new Error('Unable to load site data.');
+    }
+
+    const settings = await settingsResponse.json();
+    const projectData = await projectsResponse.json();
+
+    applySettings(settings);
+    renderProjects(projectData.projects);
+  } catch (error) {
+    console.error(error);
+  } finally {
+    attachCardEffects();
+  }
+};
+
+loadSiteData();
 </script>
 </body>
 </html>

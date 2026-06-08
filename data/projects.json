@@ -1,0 +1,44 @@
+{
+  "projects": [
+    {
+      "name": "SUKLA Player",
+      "slug": "sukla-player",
+      "shortDescription": "A dark cinematic desktop player with a premium interface, smooth controls, and a strong branded visual identity.",
+      "fullDescription": "SUKLA Player is a premium desktop player concept built around dark glass surfaces, subtle gold highlights, and a clean cinematic layout. It is designed to feel focused, refined, and ready for a future downloadable app experience.",
+      "status": "Desktop Experience",
+      "downloadLink": "",
+      "features": [
+        "Dark cinematic interface",
+        "Premium glass and gold visual identity",
+        "Smooth player-focused layout",
+        "Ready for future desktop app downloads"
+      ]
+    },
+    {
+      "name": "coming soon",
+      "slug": "brand-platform",
+      "shortDescription": "we are working on new ideas.",
+      "fullDescription": "This project area is reserved for a future SUKLA brand platform. The content can be edited later from the Electron admin app by updating this JSON file.",
+      "status": "Brand Platform",
+      "downloadLink": "",
+      "features": [
+        "Editable project content",
+        "Reusable SUKLA layout",
+        "Prepared for future launches"
+      ]
+    },
+    {
+      "name": "coming soon",
+      "slug": "expandable-system",
+      "shortDescription": "we are working on new ideas.",
+      "fullDescription": "This project area is reserved for another expandable SUKLA system. It uses the same reusable project page and can be updated without creating another HTML file.",
+      "status": "Expandable System",
+      "downloadLink": "",
+      "features": [
+        "One reusable detail page",
+        "JSON-powered project data",
+        "Simple future add/edit/delete workflow"
+      ]
+    }
+  ]
+}

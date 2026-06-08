@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SUKLA Project</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    :root {
+      --bg: #070707;
+      --bg-soft: #0d0d0d;
+      --panel: rgba(255, 255, 255, 0.055);
+      --border: rgba(255, 255, 255, 0.12);
+      --gold: #d6b25e;
+      --text: #f4efe6;
+      --muted: #b6ab97;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+      --blur: blur(18px);
+      --radius: 24px;
+      --radius-sm: 16px;
+      --container: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(214, 178, 94, 0.10), transparent 22%),
+        radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.05), transparent 18%),
+        radial-gradient(circle at 60% 80%, rgba(214, 178, 94, 0.08), transparent 20%),
+        linear-gradient(180deg, #080808 0%, #0a0a0a 55%, #090909 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 32px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .glass {
+      background: linear-gradient(
+        180deg,
+        rgba(255,255,255,0.08) 0%,
+        rgba(255,255,255,0.03) 100%
+      );
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 12px;
+      z-index: 20;
+      padding-top: 14px;
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 16px 18px;
+      border-radius: 999px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-badge {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #f3d48d, #c49635 70%);
+      box-shadow: 0 0 20px rgba(214, 178, 94, 0.45);
+      flex-shrink: 0;
+    }
+
+    .brand-name {
+      font-size: 15px;
+      letter-spacing: 0.42em;
+      color: var(--gold);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav a:hover {
+      color: var(--text);
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      border: none;
+      cursor: pointer;
+      transition: 0.22s ease;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+
+    .btn-gold {
+      padding: 14px 24px;
+      border-radius: 999px;
+      color: #151515;
+      background: linear-gradient(180deg, #efce86 0%, #d6b25e 100%);
+      box-shadow: 0 14px 30px rgba(214, 178, 94, 0.24);
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 36px rgba(214, 178, 94, 0.3);
+    }
+
+    .btn-ghost {
+      padding: 13px 22px;
+      border-radius: 999px;
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(214, 178, 94, 0.28);
+    }
+
+    .project-page {
+      padding: 72px 0 38px;
+    }
+
+    .project-shell {
+      border-radius: var(--radius);
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+      min-height: 560px;
+    }
+
+    .project-shell::before {
+      content: "";
+      position: absolute;
+      inset: auto -80px -80px auto;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(214,178,94,0.2), transparent 68%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 36px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold));
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(44px, 8vw, 96px);
+      line-height: 0.94;
+      letter-spacing: 0.08em;
+    }
+
+    .project-description {
+      max-width: 780px;
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .project-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: 0.75fr 1.25fr;
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .detail-card {
+      border-radius: var(--radius-sm);
+      padding: 22px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .detail-label {
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .status-value {
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .features-list {
+      display: grid;
+      gap: 12px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .features-list li {
+      position: relative;
+      padding-left: 22px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .features-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.72em;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 16px rgba(214, 178, 94, 0.35);
+    }
+
+    .footer {
+      padding: 0 0 38px;
+    }
+
+    .footer-card {
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer strong {
+      color: var(--gold);
+      letter-spacing: 0.2em;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    @media (max-width: 980px) {
+      .details-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-card,
+      .topbar-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav {
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(var(--container), calc(100% - 18px));
+      }
+
+      .project-page {
+        padding-top: 42px;
+      }
+
+      .project-shell {
+        padding: 18px;
+        min-height: auto;
+      }
+
+      .brand-name {
+        letter-spacing: 0.28em;
+        font-size: 13px;
+      }
+
+      .btn-gold,
+      .btn-ghost {
+        width: 100%;
+      }
+
+      .project-actions {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-inner glass">
+        <a class="brand" href="/">
+          <div class="brand-badge"></div>
+          <div class="brand-name">SUKLA</div>
+        </a>
+
+        <nav class="nav">
+          <a href="/">Home</a>
+          <a href="/#projects">Projects</a>
+          <a href="/#contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <main class="project-page">
+    <div class="container">
+      <section class="project-shell glass">
+        <div class="eyebrow" id="projectStatusLabel">Project</div>
+        <h1 id="projectName">Loading</h1>
+        <p class="project-description" id="projectDescription">Loading project details.</p>
+
+        <div class="project-actions">
+          <a class="btn btn-gold" id="downloadButton" href="#" hidden>Download</a>
+          <a class="btn btn-ghost" href="/">Back to Home</a>
+        </div>
+
+        <div class="details-grid">
+          <div class="detail-card">
+            <div class="detail-label">Status</div>
+            <div class="status-value" id="projectStatus">Loading</div>
+          </div>
+
+          <div class="detail-card">
+            <div class="detail-label">Features</div>
+            <ul class="features-list" id="featuresList"></ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-card glass">
+        <div><strong>SUKLA</strong></div>
+        <div>Premium brand identity for digital products and refined interfaces.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+const setText = (id, value) => {
+  const element = document.getElementById(id);
+
+  if (element) {
+    element.textContent = value || '';
+  }
+};
+
+const renderFeatures = features => {
+  const list = document.getElementById('featuresList');
+
+  if (!list) {
+    return;
+  }
+
+  list.textContent = '';
+
+  if (!Array.isArray(features) || features.length === 0) {
+    const item = document.createElement('li');
+    item.textContent = 'More details coming soon.';
+    list.append(item);
+    return;
+  }
+
+  features.forEach(feature => {
+    const item = document.createElement('li');
+    item.textContent = feature;
+    list.append(item);
+  });
+};
+
+const showProject = project => {
+  document.title = `${project.name} | SUKLA`;
+
+  setText('projectStatusLabel', project.status || 'Project');
+  setText('projectName', project.name);
+  setText('projectDescription', project.fullDescription);
+  setText('projectStatus', project.status);
+  renderFeatures(project.features);
+
+  const downloadButton = document.getElementById('downloadButton');
+
+  if (downloadButton && project.downloadLink) {
+    downloadButton.href = project.downloadLink;
+    downloadButton.hidden = false;
+  }
+};
+
+const showMissingProject = () => {
+  document.title = 'Project not found | SUKLA';
+  setText('projectStatusLabel', 'Project');
+  setText('projectName', 'Project not found');
+  setText('projectDescription', 'This project could not be found in data/projects.json.');
+  setText('projectStatus', 'Unavailable');
+  renderFeatures(['Check the project slug or return to the homepage.']);
+};
+
+const loadProject = async () => {
+  const slug = new URLSearchParams(window.location.search).get('slug');
+
+  if (!slug) {
+    showMissingProject();
+    return;
+  }
+
+  try {
+    const response = await fetch('/data/projects.json');
+
+    if (!response.ok) {
+      throw new Error('Unable to load projects.');
+    }
+
+    const data = await response.json();
+    const project = Array.isArray(data.projects)
+      ? data.projects.find(item => item.slug === slug)
+      : null;
+
+    if (!project) {
+      showMissingProject();
+      return;
+    }
+
+    showProject(project);
+  } catch (error) {
+    console.error(error);
+    showMissingProject();
+  }
+};
+
+loadProject();
+  </script>
+</body>
+</html>
