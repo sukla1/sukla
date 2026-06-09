@@ -26,19 +26,6 @@
         "Reusable SUKLA layout",
         "Prepared for future launches"
       ]
-    },
-    {
-      "name": "coming soon",
-      "slug": "expandable-system",
-      "shortDescription": "we are working on new ideas.",
-      "fullDescription": "This project area is reserved for another expandable SUKLA system. It uses the same reusable project page and can be updated without creating another HTML file.",
-      "status": "Expandable System",
-      "downloadLink": "",
-      "features": [
-        "One reusable detail page",
-        "JSON-powered project data",
-        "Simple future add/edit/delete workflow"
-      ]
     }
   ]
 }
