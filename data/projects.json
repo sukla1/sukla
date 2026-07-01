@@ -9,8 +9,8 @@
       "downloadLink": "downloads/Sukla-Player-Setup-1.0.2.exe",
       "features": [
         "Dark cinematic interface",
-        "Premium glass and gold visual identity",
-        "Smooth player-focused layout",
+        "Simple and easy to use",
+        "Tiny screen on the timeline",
         "Ready for future desktop app downloads"
       ]
     },
@@ -26,6 +26,15 @@
         "Reusable SUKLA layout",
         "Prepared for future launches"
       ]
+    },
+    {
+      "name": "website  dashboard",
+      "slug": "website-dashboard",
+      "shortDescription": "control your website with a click",
+      "fullDescription": "",
+      "status": "control your website",
+      "downloadLink": "downloads/SUKLA-Website-Dashboard-Setup-1.0.0.exe",
+      "features": []
     }
   ]
 }
