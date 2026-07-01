@@ -17,7 +17,7 @@
     {
       "name": "SUKLA link saver",
       "slug": "brand-platform",
-      "shortDescription": "we are working on new ideas.",
+      "shortDescription": "save your links outside your browser",
       "fullDescription": "This project area is reserved for a future SUKLA brand platform. The content can be edited later from the Electron admin app by updating this JSON file.",
       "status": "Brand Platform",
       "downloadLink": "downloads/sukla-link-saver.exe",
